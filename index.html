@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Udemy Clone</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      font-size: 14px;
+      line-height: 1.4;
+      color: #1c1d1f;
+      background-color: #fff;
+    }
+
+    .container {
+      max-width: 1340px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1c1d1f;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background-color: #5624d0;
+      color: white;
+      padding: 8px 0;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .top-bar .highlight {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 1px solid #e8e9eb;
+      padding: 12px 0;
+      background-color: white;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 34px;
+    }
+
+    .categories-dropdown {
+      margin-right: 8px;
+      padding: 0 16px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .search-bar {
+      flex-grow: 1;
+      margin: 0 16px;
+      position: relative;
+    }
+
+    .search-bar form {
+      display: flex;
+      align-items: center;
+      border: 1px solid #1c1d1f;
+      border-radius: 9999px;
+      overflow: hidden;
+      padding: 0 16px;
+      height: 48px;
+      background-color: #f7f9fa;
+    }
+
+    .search-bar input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      outline: none;
+      padding: 0 16px;
+      font-size: 14px;
+    }
+
+    .search-icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .main-nav ul {
+      display: flex;
+    }
+
+    .main-nav li {
+      margin: 0 8px;
+    }
+
+    .main-nav a {
+      font-weight: 500;
+      color: #1c1d1f;
+      padding: 8px 10px;
+    }
+
+    .user-actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .icon .icon-link {
+      font-size: 18px;
+      margin: 0 8px;
+      color: #1c1d1f;
+    }
+
+    .login-btn,
+    .signup-btn {
+      padding: 10px 16px;
+      margin: 0 5px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .login-btn {
+      border: 1px solid #1c1d1f;
+    }
+
+    .signup-btn {
+      background-color: #1c1d1f;
+      color: white;
+    }
+
+    .lang-btn {
+      font-size: 16px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #1c1d1f;
+      border-radius: 50%;
+      margin-left: 8px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: #f7f9fa;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      z-index: 1;
+      font-size: 18px;
+    }
+
+    .prev {
+      left: 20px;
+    }
+
+    .next {
+      right: 20px;
+    }
+
+    .carousel-content {
+      width: 100%;
+      position: relative;
+      height: 400px;
+      background-image: url("https://img-c.udemycdn.com/notices/web_carousel_slide/image/10ca89f6-811b-400e-983b-32c5cd76725a.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      background-color: white;
+      padding: 24px;
+      max-width: 440px;
+      margin-left: 80px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-content h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-content p {
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: #a435f0;
+      color: white;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 4px;
+    }
+
+    /* Skills Section */
+    .skills-section {
+      padding: 48px 0;
+    }
+
+    .skills-section h2 {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .skills-section > .container > p {
+      color: #6a6f73;
+      margin-bottom: 24px;
+    }
+
+    .skills-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #d1d7dc;
+    }
+
+    .tab-btn {
+      padding: 16px 12px;
+      font-weight: 700;
+      color: #6a6f73;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      color: #1c1d1f;
+      border-bottom: 3px solid #1c1d1f;
+    }
+
+    .topic-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .topic-btn {
+      padding: 8px 16px;
+      border: 1px solid #1c1d1f;
+      border-radius: 9999px;
+      background: white;
+      font-weight: 700;
+    }
+
+    .topic-btn.popular {
+      background-color: #1c1d1f;
+      color: white;
+    }
+
+    .course-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .course-card {
+      background: white;
+      border: 1px solid #d1d7dc;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+
+    .course-card:hover {
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .course-card img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 12px;
+    }
+
+    .card-content h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .instructor {
+      font-size: 12px;
+      color: #6a6f73;
+      margin-bottom: 4px;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .stars {
+      color: #b4690e;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    .reviews {
+      color: #6a6f73;
+      font-size: 12px;
+    }
+
+    .price {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .current-price {
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    .original-price {
+      text-decoration: line-through;
+      color: #6a6f73;
+    }
+
+    .bestseller-badge,
+    .hot-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background-color: #eceb98;
+      color: #3d3c0a;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+
+    .hot-badge {
+      background-color: #f55e5e;
+      color: white;
+    }
+
+    /* Trusted Section */
+    .trusted-section {
+      background-color: #f7f9fa;
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    .trusted-section p {
+      color: #6a6f73;
+      margin-bottom: 24px;
+    }
+
+    .trusted-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .trusted-logos img {
+      height: 32px;
+      object-fit: contain;
+    }
+
+    /* Learners Viewing Section */
+    .learners-viewing {
+      padding: 48px 0;
+    }
+
+    /* Learning Goals Section */
+    .learning-goals {
+      padding: 48px 0;
+      background-color: #f7f9fa;
+    }
+
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .goal-card {
+      background: white;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .goal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .goal-header h3 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .indicator {
+      display: flex;
+      gap: 4px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #d1d7dc;
+    }
+
+    .dot.active {
+      background-color: #a435f0;
+    }
+
+    .goal-card p {
+      color: #6a6f73;
+      margin-bottom: 16px;
+    }
+
+    .learn-more {
+      color: #5624d0;
+      font-weight: 700;
+    }
+
+    .new-tag {
+      background-color: #a435f0;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .goal-score {
+      grid-column: span 2;
+      background: white;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .goal-score h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #a435f0;
+    }
+
+    .score-chart {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Plans Section */
+    .plans-section {
+      padding: 48px 0;
+    }
+
+    .plans-section > .container > p {
+      color: #6a6f73;
+      margin-bottom: 32px;
+    }
+
+    .plans-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .plan-card {
+      border: 1px solid #d1d7dc;
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+    .plan-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .plan-card > p {
+      color: #6a6f73;
+      margin-bottom: 24px;
+    }
+
+    .plan-price {
+      margin-bottom: 24px;
+    }
+
+    .plan-price h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid #a435f0;
+      color: #a435f0;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 4px;
+    }
+
+    .plan-features {
+      padding-left: 24px;
+    }
+
+    .plan-features li {
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .plan-features li:before {
+      content: "✓";
+      position: absolute;
+      left: -24px;
+      color: #a435f0;
+      font-weight: 700;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 48px 0;
+      background-color: #f7f9fa;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .quote {
+      color: #1c1d1f;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .testimonial-author img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    /* Global Skills Report Section */
+    .global-skills {
+      padding: 48px 0;
+    }
+
+    .skills-report {
+      display: flex;
+      background-color: #f7f9fa;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .skills-content {
+      padding: 48px;
+      flex: 1;
+    }
+
+    .skills-content h2 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .skills-content p {
+      color: #6a6f73;
+      margin-bottom: 24px;
+    }
+
+    .skills-image {
+      flex: 1;
+      /* background: #a435f0; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .skills-image img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Trending Section */
+    .trending-section {
+      padding: 48px 0;
+      background-color: #f7f9fa;
+    }
+
+    .trending-categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .trending-category {
+      background: white;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .trending-category h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .see-more {
+      color: #5624d0;
+      font-weight: 700;
+    }
+
+    .trending-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .trending-links a {
+      color: #5624d0;
+    }
+
+    /* Case Study */
+    .case-study {
+      padding: 48px 0;
+    }
+
+    .case-study .container {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .case-study-header {
+      flex: 1;
+    }
+
+    .case-study-header > p {
+      color: #6a6f73;
+      margin-bottom: 8px;
+    }
+
+    .case-study-header h2 {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+
+    .stat h3 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #a435f0;
+      margin-bottom: 4px;
+    }
+
+    .case-study-image {
+      flex: 1;
+    }
+
+    /* Footer Banner */
+    .footer-banner {
+      background-color: #f7f9fa;
+      padding: 32px 0;
+      text-align: center;
+      border-top: 1px solid #d1d7dc;
+    }
+
+    .footer-banner p {
+      margin-bottom: 16px;
+    }
+
+    .banner-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .banner-logos img {
+      height: 24px;
+      object-fit: contain;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #1c1d1f;
+      color: white;
+      padding: 24px 0 48px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .language-selector button {
+      display: flex;
+      align-items: center;
+      color: white;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid white;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 16px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-column ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-column a {
+      color: white;
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom .logo img {
+      height: 28px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: #d1d7dc;
+    }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 1200px) {
+      .course-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trending-categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .goals-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .goal-score {
+        grid-column: span 1;
+      }
+
+      .plans-container {
+        grid-template-columns: 1fr;
+      }
+
+      .case-study .container {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .course-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .skills-report {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .course-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trending-categories {
+        grid-template-columns: 1fr;
+      }
+
+      .goals-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        margin-left: 20px;
+        max-width: 90%;
+      }
+    }
+  </style>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <p>
+          Ready to get gifts that matter?
+          <span class="highlight"
+            >Find the skills you need at Udemy Business.</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
+            alt="Udemy"
+          />
+        </div>
+        <div class="categories-dropdown">
+          <span>Categories</span>
+        </div>
+        <div class="search-bar">
+          <form>
+            <button type="submit" class="search-icon">
+              <i class="fas fa-search"></i>
+            </button>
+            <input type="text" placeholder="Search for anything" />
+          </form>
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#">Udemy Business</a></li>
+            <li><a href="#">Teach on Udemy</a></li>
+            <li><a href="#">My learning</a></li>
+          </ul>
+        </nav>
+        <div class="user-actions">
+          <a href="#" class="icon-link"><i class="fas fa-shopping-cart"></i></a>
+          <!-- <a href="#" class="icon-link"><i class="fas fa-bell"></i></a> -->
+          <a href="#" class="login-btn">Log in</a>
+          <a href="#" class="signup-btn">Sign up</a>
+          <a href="#" class="lang-btn"><i class="fas fa-globe"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="carousel">
+          <button class="carousel-arrow prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-content">
+            <div class="hero-content">
+              <h1>Skills that drive you forward</h1>
+              <p>
+                Learn the latest skills to reach your professional goals — with
+                courses starting at just $12.99 through Dec 21.
+              </p>
+              <a href="#" class="btn-primary">Start today</a>
+            </div>
+          </div>
+          <button class="carousel-arrow next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+      <div class="container">
+        <h2>All the skills you need in one place</h2>
+        <p>
+          From critical skills to technical topics, Udemy supports your
+          professional development
+        </p>
+
+        <div class="skills-tabs">
+          <button class="tab-btn active">Skills browser</button>
+          <button class="tab-btn">All certifications</button>
+          <button class="tab-btn">Leadership</button>
+          <button class="tab-btn">Web Development</button>
+          <button class="tab-btn">Communication</button>
+          <button class="tab-btn">Business Analysis & Intelligence</button>
+        </div>
+
+        <div class="topic-buttons">
+          <button class="topic-btn popular">
+            Popular <i class="fas fa-chevron-down"></i>
+          </button>
+          <button class="topic-btn">Data Science</button>
+          <button class="topic-btn">Python</button>
+          <button class="topic-btn">Machine Learning</button>
+          <button class="topic-btn">Data Analysis</button>
+          <button class="topic-btn">Artificial Intelligence (AI)</button>
+          <button class="topic-btn">Marketing</button>
+          <button class="topic-btn">Web</button>
+        </div>
+
+        <div class="course-cards">
+          <div class="course-card">
+            <img
+              src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Data Science Course"
+            />
+            <div class="card-content">
+              <h3>Complete Data Science & Machine Learning Bootcamp 2023</h3>
+              <p class="instructor">Dr. Angela Yu</p>
+              <div class="rating">
+                <span class="stars">4.7</span>
+                <span class="reviews">(123,456)</span>
+              </div>
+              <div class="price">
+                <span class="current-price">$13.99</span>
+                <span class="original-price">$89.99</span>
+              </div>
+              <span class="bestseller-badge">Bestseller</span>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <img
+              src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40?q=80&w=2025&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Python Course"
+            />
+            <div class="card-content">
+              <h3>100 Days of Code: The Complete Python Pro Bootcamp</h3>
+              <p class="instructor">Dr. Angela Yu</p>
+              <div class="rating">
+                <span class="stars">4.7</span>
+                <span class="reviews">(237,894)</span>
+              </div>
+              <div class="price">
+                <span class="current-price">$13.99</span>
+                <span class="original-price">$89.99</span>
+              </div>
+              <span class="bestseller-badge">Bestseller</span>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <img
+              src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="AI Course"
+            />
+            <div class="card-content">
+              <h3>Complete Machine Learning & Data Science Bootcamp 2023</h3>
+              <p class="instructor">Andrei Neagoie, Daniel Bourke</p>
+              <div class="rating">
+                <span class="stars">4.6</span>
+                <span class="reviews">(49,575)</span>
+              </div>
+              <div class="price">
+                <span class="current-price">$13.99</span>
+                <span class="original-price">$89.99</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <img
+              src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="AI Course"
+            />
+            <div class="card-content">
+              <h3>ChatGPT Masterclass: A Complete ChatGPT Guide</h3>
+              <p class="instructor">Maximilian Schwarzmüller</p>
+              <div class="rating">
+                <span class="stars">4.7</span>
+                <span class="reviews">(35,421)</span>
+              </div>
+              <div class="price">
+                <span class="current-price">$13.99</span>
+                <span class="original-price">$84.99</span>
+              </div>
+              <span class="bestseller-badge">Bestseller</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trusted Section -->
+    <section class="trusted-section">
+      <div class="container">
+        <p>
+          Trusted by over 14,400 companies and millions of learners around the
+          world
+        </p>
+        <div class="trusted-logos">
+          <img
+            src="https://cms-images.udemycdn.com/content/tqevknj7om/svg/volkswagen_logo.svg?position=c&quality=80&x.app=portals"
+            alt="Volkswagen"
+          />
+          <img
+            src="https://cms-images.udemycdn.com/content/2gevcc0kxt/svg/samsung_logo.svg?position=c&quality=80&x.app=portals"
+            alt="Samsung"
+          />
+          <img
+            src="https://cms-images.udemycdn.com/content/mueb2ve09x/svg/cisco_logo.svg?position=c&quality=80&x.app=portals"
+            alt="Cisco"
+          />
+          <img
+            src="https://cms-images.udemycdn.com/content/ryaowrcjb2/svg/vimeo_logo_resized-2.svg?position=c&quality=80&x.app=portals"
+            alt="vemeo"
+          />
+          <img
+            src="https://cms-images.udemycdn.com/content/bthyo156te/svg/procter_gamble_logo.svg?position=c&quality=80&x.app=portals"
+            alt="P&G"
+          />
+          <img
+            src="https://cms-images.udemycdn.com/content/luqe0d6mx2/svg/hewlett_packard_enterprise_logo.svg?position=c&quality=80&x.app=portals"
+            alt="HPE"
+          />
+          <img
+            src="https://cms-images.udemycdn.com/content/siaewwmkch/svg/citi_logo.svg?position=c&quality=80&x.app=portals"
+            alt="Citi"
+          />
+          <img
+            src="https://cms-images.udemycdn.com/content/swmv0okrlh/svg/ericsson_logo.svg?position=c&quality=80&x.app=portals"
+            alt="Ericsson"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Learners Viewing Section -->
+    <section class="learners-viewing">
+      <div class="container">
+        <h2>Learners are viewing</h2>
+        <div class="course-cards">
+          <div class="course-card">
+            <img
+              src="https://i.ytimg.com/vi/m0LdKZ-prto/maxresdefault.jpg"
+              alt="Python Course"
+            />
+            <div class="card-content">
+              <h3>Learn Python: The Complete Python Programming Course</h3>
+              <p class="instructor">Avinash Jain, The Codex</p>
+              <div class="rating">
+                <span class="stars">4.4</span>
+                <span class="reviews">(4,582)</span>
+              </div>
+              <div class="price">
+                <span class="current-price">$13.99</span>
+                <span class="original-price">$84.99</span>
+              </div>
+              <span class="bestseller-badge">Bestseller</span>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <img
+              src="https://www.chatgptbotsai.com/wp-content/uploads/2023/05/16268343_rm373batch5-blogbanner-02-scaled.jpg"
+              alt="Machine Learning Course"
+            />
+            <div class="card-content">
+              <h3>
+                Machine Learning A-Z™: Hands-On Python & R In Data Science
+              </h3>
+              <p class="instructor">Kirill Eremenko, Hadelin de Ponteves</p>
+              <div class="rating">
+                <span class="stars">4.5</span>
+                <span class="reviews">(154,592)</span>
+              </div>
+              <div class="price">
+                <span class="current-price">$13.99</span>
+                <span class="original-price">$89.99</span>
+              </div>
+              <span class="bestseller-badge">Bestseller</span>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <img
+              src="https://www.interviewbit.com/blog/wp-content/uploads/2023/05/Artboard-1-copy-2.jpg"
+              alt="Python Course"
+            />
+            <div class="card-content">
+              <h3>Learn Python with 5 Projects: Full Course for Beginners</h3>
+              <p class="instructor">Codestars by Rob Percival</p>
+              <div class="rating">
+                <span class="stars">4.6</span>
+                <span class="reviews">(5,728)</span>
+              </div>
+              <div class="price">
+                <span class="current-price">$13.99</span>
+                <span class="original-price">$89.99</span>
+              </div>
+              <span class="hot-badge">Hot & New</span>
+            </div>
+          </div>
+
+          <div class="course-card">
+            <img
+              src="https://i.ytimg.com/vi/Vl0H-qTclOg/maxresdefault.jpg"
+              alt="Excel Course"
+            />
+            <div class="card-content">
+              <h3>Microsoft Excel - Excel from Beginner to Advanced</h3>
+              <p class="instructor">Kyle Pew, Office Newb</p>
+              <div class="rating">
+                <span class="stars">4.7</span>
+                <span class="reviews">(308,454)</span>
+              </div>
+              <div class="price">
+                <span class="current-price">$13.99</span>
+                <span class="original-price">$89.99</span>
+              </div>
+              <span class="bestseller-badge">Bestseller</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Goals Section -->
+    <section class="learning-goals">
+      <div class="container">
+        <h2>Learning focused on your goals</h2>
+
+        <div class="goals-grid">
+          <div class="goal-card">
+            <div class="goal-header">
+              <h3>Hands-on learning</h3>
+              <div class="indicator">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <p>
+              Apply what you learn with hands-on coding exercises, projects, and
+              labs.
+            </p>
+            <a href="#" class="learn-more">Get started</a>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header">
+              <h3>Certification prep</h3>
+              <div class="indicator">
+                <span class="dot"></span>
+                <span class="dot active"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <p>
+              Industry-recognized certifications are critical to landing the
+              most in-demand roles. We'll help you prepare for certification
+              exams with courses, practice tests, and hands-on labs.
+            </p>
+            <a href="#" class="learn-more">Find out more</a>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header">
+              <h3>Depth and expertise</h3>
+              <div class="indicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot active"></span>
+              </div>
+            </div>
+            <p>
+              From deep dives to practical strength, build a technical
+              foundation with a learning plan designed to help achieve your
+              goals.
+            </p>
+            <a href="#" class="learn-more">Find out more</a>
+          </div>
+
+          <div class="goal-card">
+            <div class="goal-header">
+              <h3>Customizable content</h3>
+              <span class="new-tag">New</span>
+            </div>
+            <p>
+              Use intuitive learning paths to follow, build your own custom
+              learning paths to drive professional development, or adopt a
+              pre-configured path.
+            </p>
+            <a href="#" class="learn-more">Find out more</a>
+          </div>
+
+          <div class="goal-score">
+            <h3>Your score: 109</h3>
+            <div class="score-chart">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/4kbyXne3Slx9Sfz4nTBqdf/8ac2b75db1a118f15e2fb5dfe2bb4567/desktop-hands-on-learning-2x.png"
+                alt="Score Chart"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans-section">
+      <div class="container">
+        <h2>Accelerate growth – for you or your organization</h2>
+        <p>
+          Quality learning content for your specific needs, all in one
+          subscription.
+        </p>
+
+        <div class="plans-container">
+          <div class="plan-card">
+            <h3>Personal Plan</h3>
+            <p>For individuals</p>
+            <div class="plan-price">
+              <h4>Starting at $16.58 per month</h4>
+              <a href="#" class="btn-primary">Subscribe now</a>
+            </div>
+            <ul class="plan-features">
+              <li>Access to 25,000+ top Udemy courses</li>
+              <li>Practice with assessments and labs</li>
+              <li>Coding exercises</li>
+              <li>Offline viewing</li>
+              <li>Certificate of completion</li>
+            </ul>
+          </div>
+
+          <div class="plan-card">
+            <h3>Team Plan</h3>
+            <p>For teams of 2+ users</p>
+            <div class="plan-price">
+              <h4>$14.99 a month per user</h4>
+              <a href="#" class="btn-primary">Get started</a>
+            </div>
+            <ul class="plan-features">
+              <li>Access to 25,000+ top Udemy courses</li>
+              <li>Practice with assessments and labs</li>
+              <li>Analytics and insights</li>
+              <li>Workspace assessments</li>
+              <li>Team learning groups</li>
+              <li>Workspace insights with custom reporting</li>
+            </ul>
+          </div>
+
+          <div class="plan-card">
+            <h3>Enterprise Plan</h3>
+            <p>For organizations of all sizes</p>
+            <div class="plan-price">
+              <h4>Contact sales for pricing</h4>
+              <a href="#" class="btn-outline">Contact sales</a>
+            </div>
+            <ul class="plan-features">
+              <li>Access to 25,000+ top Udemy courses</li>
+              <li>Practice with assessments and labs</li>
+              <li>Analytics and insights</li>
+              <li>Workspace assessments</li>
+              <li>Team learning groups</li>
+              <li>Workspace insights with custom reporting</li>
+              <li>LMS integrations</li>
+              <li>SSO and LMS integrations</li>
+              <li>Enterprise-grade security</li>
+              <li>Unlimited access to top certifications</li>
+              <li>Custom user onboarding</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <h2>See what others are achieving through learning</h2>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <p class="quote">
+              "Learning with Udemy has helped me advance my career, improve my
+              skills, and build confidence."
+            </p>
+            <div class="testimonial-author">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/1Djz6c0gZLaCG5SQS3PgUY/54b6fb8c85d8da01da95cbb94fa6335f/Alvin_Lim.jpeg"
+                alt="Avatar"
+              />
+              <span>Jane D.</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="quote">
+              "Udemy has given me the tools and knowledge to pursue my goals and
+              make meaningful career changes."
+            </p>
+            <div class="testimonial-author">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/6dT7xusLHYoOUizXeVqgUk/4317f63fe25b2e07ad8c70cda641014b/William_A_Wachlin.jpeg"
+                alt="Avatar"
+              />
+              <span>Michael T.</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="quote">
+              "The flexible learning options and variety of courses have helped
+              me develop skills across multiple domains."
+            </p>
+            <div class="testimonial-author">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/4w9dYD4F64ibQwsaAB01Z4/c4610e9b1ac65589d8b1374ad10714e2/Ian_Stevens.png"
+                alt="Avatar"
+              />
+              <span>Sophia W.</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="quote">
+              "I've been able to apply what I've learned immediately in my work,
+              which has led to tangible results."
+            </p>
+            <div class="testimonial-author">
+              <img
+                src="https://cms-images.udemycdn.com/96883mtakkm8/2PBcNgsQa3SvYWklkiN27r/5b8707cc79c8cae5774d5eb3b88b4001/logo_stackoverflow.svg"
+                alt="Avatar"
+              />
+              <span>David R.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Skills Report Section -->
+    <section class="global-skills">
+      <div class="container">
+        <div class="skills-report">
+          <div class="skills-content">
+            <h2>Top trends for the future of work</h2>
+            <p>
+              Navigate the rapidly evolving workplace with insights into career
+              growth, skill-building, and job mobility from Udemy's 2023 Global
+              Learning Skills Report.
+            </p>
+            <a href="#" class="btn-outline">Read the report</a>
+          </div>
+          <div class="skills-image">
+            <img
+              src="https://cms-images.udemycdn.com/96883mtakkm8/1qvvR0FDKv9chruIpia6Sc/b2af22a0097e47de4e4354237e3f378c/Onsite_Desktop_GLSTR25.png"
+              alt="2023 Global Learning Skills Trends Report"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section class="trending-section">
+      <div class="container">
+        <h2>Trending Now</h2>
+
+        <div class="trending-categories">
+          <div class="trending-category">
+            <h3>ChatGPT is a top skill</h3>
+            <a href="#" class="see-more">See ChatGPT courses</a>
+          </div>
+
+          <div class="trending-category">
+            <h3>Development</h3>
+            <div class="trending-links">
+              <a href="#">Web Development</a>
+              <a href="#">Mobile Development</a>
+              <a href="#">Python</a>
+            </div>
+          </div>
+
+          <div class="trending-category">
+            <h3>Design</h3>
+            <div class="trending-links">
+              <a href="#">Graphic Design</a>
+              <a href="#">Figma</a>
+              <a href="#">User Experience Design (UX Design)</a>
+            </div>
+          </div>
+
+          <div class="trending-category">
+            <h3>Business</h3>
+            <div class="trending-links">
+              <a href="#">Microsoft Certified: Professional (MCP)</a>
+              <a href="#">PMI Project Management Professional (PMP)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hamilton Case Study -->
+    <section class="case-study">
+      <div class="container">
+        <div class="case-study-header">
+          <p>Client | Alten | Hamilton</p>
+          <h2>
+            Read how Hamilton Unlocks Talent Retention and Productivity Through
+            Upskilling
+          </h2>
+          <div class="stats">
+            <div class="stat">
+              <h3>93%</h3>
+              <p>of learners report increased confidence</p>
+            </div>
+            <div class="stat">
+              <h3>65%</h3>
+              <p>of learners applied their learnings</p>
+            </div>
+          </div>
+          <a href="#" class="btn-primary">Download the case study</a>
+        </div>
+        <div class="case-study-image">
+          <img
+            src="https://i.ibb.co/G5t6X5d/case-study.jpg"
+            alt="Hamilton Case Study"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Banner -->
+    <div class="footer-banner">
+      <div class="container">
+        <p>
+          Top companies choose <strong>Udemy Business</strong> to build
+          in-demand career skills.
+        </p>
+        <div class="banner-logos">
+          <img
+            src="https://s.udemycdn.com/partner-logos/v4/nasdaq-light.svg"
+            alt="Nasdaq"
+          />
+          <img
+            src="https://s.udemycdn.com/partner-logos/v4/volkswagen-light.svg"
+            alt="Volkswagen"
+          />
+          <img
+            src="https://s.udemycdn.com/partner-logos/v4/netapp-light.svg"
+            alt="NetApp"
+          />
+          <img
+            src="https://s.udemycdn.com/partner-logos/v4/eventbrite-light.svg"
+            alt="Eventbrite"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="language-selector">
+            <button><i class="fas fa-globe"></i> English</button>
+          </div>
+        </div>
+
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h4>Udemy Business</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">News & Insights</a></li>
+              <li><a href="#">Become an Instructor</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Web Development</h4>
+            <ul>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">JavaScript</a></li>
+              <li><a href="#">React JS</a></li>
+              <li><a href="#">Angular</a></li>
+              <li><a href="#">CSS</a></li>
+              <li><a href="#">Node.Js</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>IT Operations</h4>
+            <ul>
+              <li><a href="#">AWS Certification</a></li>
+              <li><a href="#">Microsoft Azure</a></li>
+              <li><a href="#">AWS Lambda</a></li>
+              <li><a href="#">CompTIA A+</a></li>
+              <li><a href="#">Amazon VPC</a></li>
+              <li><a href="#">AWS CloudFormation</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Leadership</h4>
+            <ul>
+              <li><a href="#">Leadership Skills</a></li>
+              <li><a href="#">Management Skills</a></li>
+              <li><a href="#">Manager Training</a></li>
+              <li><a href="#">Communication Skills</a></li>
+              <li><a href="#">Conflict Management</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Data Science & Analytics</h4>
+            <ul>
+              <li><a href="#">Data Analytics</a></li>
+              <li><a href="#">SQL</a></li>
+              <li><a href="#">Tableau</a></li>
+              <li><a href="#">Business Analysis</a></li>
+              <li><a href="#">Business Intelligence</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="logo">
+            <img
+              src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
+              alt="Udemy"
+            />
+          </div>
+          <p>© 2025 Udemy, Inc.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Three.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+      // Wait for the DOM to be fully loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Find the hero section
+        const heroSection = document.querySelector(".hero");
+
+        // Create a canvas element for Three.js
+        const canvas = document.createElement("canvas");
+        canvas.style.position = "absolute";
+        canvas.style.top = "0";
+        canvas.style.left = "0";
+        canvas.style.width = "100vw";
+        canvas.style.height = "100vh";
+        canvas.style.zIndex = "110";
+        canvas.style.position = "fixed";
+        canvas.style.border = "1px solid red";
+        canvas.style.pointerEvents = "none"; // Make sure clicks go through to elements below
+
+        // Insert the canvas as the first child of the hero section
+        heroSection.insertBefore(canvas, heroSection.firstChild);
+
+        // Make sure the hero section has position relative
+        heroSection.style.position = "relative";
+
+        // Initialize Three.js scene
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(
+          75,
+          canvas.offsetWidth / canvas.offsetHeight,
+          0.1,
+          1000
+        );
+
+        const renderer = new THREE.WebGLRenderer({
+          canvas: canvas,
+          alpha: true,
+          antialias: true,
+        });
+        renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // Set up particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 2000;
+
+        // Create arrays to hold particle positions and colors
+        const positions = new Float32Array(particlesCount * 3);
+        const colors = new Float32Array(particlesCount * 3);
+
+        // Generate random particles with random colors
+        for (let i = 0; i < particlesCount; i++) {
+          // Position
+          positions[i * 3] = (Math.random() - 0.5) * 10; // x
+          positions[i * 3 + 1] = (Math.random() - 0.5) * 5; // y
+          positions[i * 3 + 2] = (Math.random() - 0.5) * 10; // z
+
+          // Completely random color
+          colors[i * 3] = Math.random(); // Red
+          colors[i * 3 + 1] = Math.random(); // Green
+          colors[i * 3 + 2] = Math.random(); // Blue
+        }
+
+        particlesGeometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(positions, 3)
+        );
+        particlesGeometry.setAttribute(
+          "color",
+          new THREE.BufferAttribute(colors, 3)
+        );
+
+        // Material
+        const particlesMaterial = new THREE.PointsMaterial({
+          size: 0.02,
+          transparent: true,
+          opacity: 0.8,
+          vertexColors: true,
+          blending: THREE.AdditiveBlending,
+          sizeAttenuation: true,
+        });
+
+        // Create the particle system
+        const particleSystem = new THREE.Points(
+          particlesGeometry,
+          particlesMaterial
+        );
+        scene.add(particleSystem);
+
+        // Position camera
+        camera.position.z = 5;
+
+        // Track mouse position
+        const mouse = new THREE.Vector2();
+        let mouseX = 0;
+        let mouseY = 0;
+
+        // Convert screen coordinates to 3D space
+        function updateMousePosition(event) {
+          // Convert to normalized device coordinates (-1 to +1)
+          const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+          const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+          // Store normalized coordinates
+          mouse.x = mouseX;
+          mouse.y = mouseY;
+        }
+
+        // Listen for mouse movement only when over the hero section
+        document.addEventListener("mousemove", updateMousePosition);
+
+        // Initial target for when mouse isn't over hero
+        const targetPosition = new THREE.Vector3(0, 0, 0);
+
+        // Store original positions for particles
+        const originalPositions = new Float32Array(positions);
+
+        // Handle window resize
+        window.addEventListener("resize", () => {
+          // Update camera
+          camera.aspect = window.offsetWidth / window.offsetHeight;
+          camera.updateProjectionMatrix();
+
+          // Update renderer
+          renderer.setSize(window.offsetWidth, window.offsetHeight);
+        });
+
+        // Animation loop
+        function animate() {
+          requestAnimationFrame(animate);
+
+          // Update target position based on mouse coordinates
+          // Convert mouse position to 3D coordinates in scene
+          targetPosition.set(
+            mouse.x * 5, // Scale to make movement more pronounced
+            mouse.y * 2.5,
+            0 // Keep z at 0 to maintain depth
+          );
+
+          // Update individual particles
+          const positions = particlesGeometry.attributes.position.array;
+
+          for (let i = 0; i < particlesCount; i++) {
+            const i3 = i * 3;
+
+            // Calculate distance from particle to mouse
+            const x = positions[i3];
+            const y = positions[i3 + 1];
+            const z = positions[i3 + 2];
+
+            // Original "home" position of this particle
+            const origX = originalPositions[i3];
+            const origY = originalPositions[i3 + 1];
+            const origZ = originalPositions[i3 + 2];
+
+            // Force calculations
+            // 1. Attraction to mouse cursor
+            const dx = targetPosition.x - x;
+            const dy = targetPosition.y - y;
+            const dz = targetPosition.z - z;
+
+            // Distance from particle to cursor
+            const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+            // Influence factor - stronger when closer to cursor
+            const influence = Math.min(1, 2 / (distance + 0.1));
+
+            // Move towards cursor with influence factor
+            positions[i3] += dx * 0.01 * influence;
+            positions[i3 + 1] += dy * 0.01 * influence;
+            positions[i3 + 2] += dz * 0.01 * influence;
+
+            // 2. Return to original position when far from cursor
+            const returnForce = 0.01 * (1 - influence);
+            positions[i3] += (origX - positions[i3]) * returnForce;
+            positions[i3 + 1] += (origY - positions[i3 + 1]) * returnForce;
+            positions[i3 + 2] += (origZ - positions[i3 + 2]) * returnForce;
+
+            // Add small random movement for more life
+            positions[i3] += (Math.random() - 0.5) * 0.003;
+            positions[i3 + 1] += (Math.random() - 0.5) * 0.003;
+            positions[i3 + 2] += (Math.random() - 0.5) * 0.003;
+          }
+
+          particlesGeometry.attributes.position.needsUpdate = true;
+
+          // Slight rotation for added effect
+          particleSystem.rotation.y += 0.0005;
+
+          renderer.render(scene, camera);
+        }
+
+        animate();
+      });
+    </script>
+  </body>
+</html>
